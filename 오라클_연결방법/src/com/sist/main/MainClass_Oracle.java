@@ -2,7 +2,7 @@ package com.sist.main;
 import java.sql.*;
 public class MainClass_Oracle {
 /*
- 	자바
+ 	자바 
  	--- 최종 => 네트워크  /  데이터베이스 => 자바라이브러리(JDBC)  ,  외부라이브러리(MyBatis, JPA)
  	
  	bit > byte(8bit) => 한글자 > word(단어) > row(record) > table(구분되어 있다)
