@@ -77,7 +77,7 @@ public class BoardDAO {
 			// 1. 연결
 			getConnection();
 			// 2. sql문장
-			String sql="INSERT INTO freeboard(no,name,subject,content,pwd) VALUER("
+			String sql="INSERT INTO freeboard(no,name,subject,content,pwd) VALUES("
 					+"(SELECT NVL(MAX(no)+1,1) FROM freeboard),?,?,?,?)";
 			// 3. 오라클로 전송
 			ps=conn.prepareStatement(sql);
@@ -105,7 +105,7 @@ public class BoardDAO {
 			// 2. 전송할 sql문장 제작
 			String sql="UPDATE freeboard SET "
 					+"hit=hit+1 "
-					+"WHERE no=?";
+					+"WHERE no="+no;
 			
 			// 3. 전송
 			ps=conn.prepareStatement(sql);
@@ -128,7 +128,7 @@ public class BoardDAO {
 			
 			// 9. VO에 값을 채운다
 			vo.setNo(rs.getInt(1));
-			vo.setSubject(rs.getString(2));
+			vo.setName(rs.getString(2));
 			vo.setSubject(rs.getString(3));
 			vo.setContent(rs.getString(4));
 			vo.setRegdate(rs.getDate(5));
@@ -144,6 +144,24 @@ public class BoardDAO {
 	//-------------------------------------
 	// 4. 수정(update)
 	// 5. 삭제(delete)
+	public void boardDelete(int no) {
+		try {
+			//1. 연결
+			getConnection();
+			//2. sql문장
+			String sql="DELETE FROM freeboard "
+					+"WHERE no="+no;
+			// 3. sql 문장 전송
+			ps=conn.prepareStatement(sql);
+			// 4. 실행 요청
+			ps.executeUpdate(); // commit
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			disConnection();
+		}
+	}
 	//---------------------------------> 본인여부 확인(비밀번호 비교)
 	// 6. 검색(select) (like)
 
