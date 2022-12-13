@@ -59,18 +59,43 @@ public class BoardDAO {
 				vo.setName(rs.getString(3));
 				vo.setDbday(rs.getString(4));
 				vo.setHit(rs.getInt(5));
-			
+			    list.add(vo);
 			}
 			rs.close();
 			
 		}catch(Exception ex) { 
 			ex.printStackTrace(); // 오류 확인
 		}finally {
-			disConnection(); // 오라클 연결 해ㅈ[
+			disConnection(); // 오라클 연결 해지
 		}
 		return list;
 	}
+	
 	// 2. 게시물 추가(insert)
+	public void boardInsert(BoardVO vo) {
+		try {
+			// 1. 연결
+			getConnection();
+			// 2. sql문장
+			String sql="INSERT INTO freeboard(no,name,subject,content,pwd) VALUER("
+					+"(SELECT NVL(MAX(no)+1,1) FROM freeboard),?,?,?,?)";
+			// 3. 오라클로 전송
+			ps=conn.prepareStatement(sql);
+			// 4. 실행전에 ?에 값을 채운다
+			ps.setString(1, vo.getName());
+			ps.setString(2, vo.getSubject());
+			ps.setString(3, vo.getContent());
+			ps.setString(4, vo.getPwd());
+			
+			// 5. 실행명령
+			ps.executeUpdate();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			disConnection();
+		}
+	}
+	
 	// 3. 상세보기(select)(where 조건)
 	public BoardVO boardDetailData(int no) { // no=게시물 번호 -> 사용자로부터 받아서 데이터를 넘겨준다.(primary key)
 		BoardVO vo=new BoardVO();

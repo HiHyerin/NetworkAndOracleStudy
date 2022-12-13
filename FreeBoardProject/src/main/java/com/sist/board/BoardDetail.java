@@ -1,0 +1,21 @@
+package com.sist.board;
+
+import java.io.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/BoardDetail")
+public class BoardDetail extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	// 서버에 의해서 자동으로 호출되는 메소드
+	// 사용자 요청을 했을 때마다 호출
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
