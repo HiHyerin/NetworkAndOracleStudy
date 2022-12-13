@@ -92,5 +92,36 @@ public class ZipcodeDAO {
 		return list;
 	}
 	// 2. 검색 개수
+	public int postCount(String dong) {
+		int count=0;
+		try {
+			// 1.연결
+			getConnection();
+			//2. sql문장
+			String sql="SELECT COUNT(*) " // 개수 확인
+					+ "FROM zipcode "
+					+ "WHERE dong LIKE '%'||?||'%'";
+			
+			// 3. 오라클 전송
+			ps=conn.prepareStatement(sql);
+			
+			// 4. ?에 값을 채운다
+			ps.setString(1, dong);
+			
+			// 5. 실행 후 결과값을 읽어온다
+			ResultSet rs=ps.executeQuery();
+			
+			// 6. count에 저장
+			rs.next();
+			count=rs.getInt(1);
+			rs.close();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			disConnection();
+		}
+		return count;
+	}
 
 }
