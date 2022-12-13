@@ -19,7 +19,7 @@ public class BoardVO {
 	// TO_CHAR  	--- String ****
 	// TO_NUMBER	--- int
 	// TO_DATE		--- Date
-	private Date rdgdate;
+	private Date regdate;
 	public int getNo() {
 		return no;
 	}
@@ -62,11 +62,11 @@ public class BoardVO {
 	public void setDbday(String dbday) {
 		this.dbday = dbday;
 	}
-	public Date getRdgdate() {
-		return rdgdate;
+	public Date getRegdate() {
+		return regdate;
 	}
-	public void setRdgdate(Date rdgdate) {
-		this.rdgdate = rdgdate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 	
 	
