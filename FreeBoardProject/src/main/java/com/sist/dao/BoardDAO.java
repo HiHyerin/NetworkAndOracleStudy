@@ -1,5 +1,5 @@
 package com.sist.dao;
-// 오라클 연결
+// 오라클 연결 
 import java.util.*;
 import java.sql.*;
 public class BoardDAO {
