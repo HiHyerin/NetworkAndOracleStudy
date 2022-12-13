@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"import="java.util.*,com.sist.dao.*"%>
+    pageEncoding="EUC-KR" import="java.util.*,com.sist.dao.*"%>
     
  <%
- 	request.setCharacterEncoding("EUC=KR");
+ 	request.setCharacterEncoding("EUC-KR");
  	String dong=request.getParameter("dong");
  	ArrayList<ZipcodeVO> list=null;
  	
@@ -51,7 +51,7 @@
 			%>
 				<tr>
 					<td width=20%><%=vo.getZipcode() %></td>
-					<td width=80%><%=vo.getSido()+" "+vo.getGugun()+" "+vo.getDong()+" "+vo.getBunji() %></td>
+					<td width=80%><%=vo.getAddress() %></td>
 				</tr>
 			<%
 				}
