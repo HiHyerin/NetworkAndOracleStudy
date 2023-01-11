@@ -302,6 +302,7 @@ create table project_recipe_chef(
         constraint ps_cno_fk foreign key(cno)
         references project_seoul_category(cno)
     );
+    select * from tab;
     
     select * from tab;
     
@@ -425,3 +426,4 @@ create table project_dataBoard(
     filesize number default 0,
     constraint pro_data_no_pk primary key(no)
 );
+commit;
